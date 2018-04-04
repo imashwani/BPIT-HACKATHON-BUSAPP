@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "215105345973",
+    "firebase_url": "https://easytravel-bb7c3.firebaseio.com",
+    "project_id": "easytravel-bb7c3",
+    "storage_bucket": "easytravel-bb7c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215105345973:android:3c8360c218fbc1cd",
+        "android_client_info": {
+          "package_name": "com.av.easytravel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215105345973-dprt9gveehlntncjndmvklmvgpsg5ve7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.av.easytravel",
+            "certificate_hash": "5a69137c1e0f02cf6c1256c0a5752ec6c8cf508f"
+          }
+        },
+        {
+          "client_id": "215105345973-frdt5q0vccequvnbifnoud5gqp9o4vnn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.av.easytravel",
+            "certificate_hash": "eebb3525b2ba318a55d6e41ef315ec9592fc6049"
+          }
+        },
+        {
+          "client_id": "215105345973-cj3qohl2f6s3au0pphf3kold3f7au5pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1rBTwtuEKATB3OrAoLRcrR_ZFFgUaAKk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215105345973-cj3qohl2f6s3au0pphf3kold3f7au5pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215105345973:android:392ab1563f3ae35d",
+        "android_client_info": {
+          "package_name": "com.example.ashwani.buswaliapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215105345973-p6cq35737v5p6c0s9lqlh874ebannr6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ashwani.buswaliapp",
+            "certificate_hash": "5a69137c1e0f02cf6c1256c0a5752ec6c8cf508f"
+          }
+        },
+        {
+          "client_id": "215105345973-cj3qohl2f6s3au0pphf3kold3f7au5pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1rBTwtuEKATB3OrAoLRcrR_ZFFgUaAKk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215105345973-cj3qohl2f6s3au0pphf3kold3f7au5pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
