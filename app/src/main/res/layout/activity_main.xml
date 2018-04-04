@@ -1,213 +1,249 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<?xml version="1.0" encoding="utf-8"?><!-- Use DrawerLayout as root container for activity -->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:layout_gravity="center"
-    android:layout_weight="1"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:fitsSystemWindows="true">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_column="2"
-    android:layout_gravity="center|top"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:rowCount="2">
-<Button
-    android:id="@+id/logout_button"
-    android:layout_gravity="center"
-    android:padding="10dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Logout"/>
+    <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+    <LinearLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/game_button"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Games"/>
-    <android.support.v7.widget.CardView
-        android:id="@+id/viewComplaintCardView_home"
-        style="@style/cradview_home"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#303F9F"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-        <LinearLayout
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fillViewport="true">
 
-            <ImageView
-                style="@style/image_home"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/circle_gray"
-                android:padding="2dp"
-                android:src="@drawable/view_comp_icon" />
-
-            <TextView
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="View Complaints"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:background="#c2b8b8" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Know status of your Complaints"
-
-                android:textColor="@android:color/darker_gray" />
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/addNewComplaintCV_home"
-        style="@style/cradview_home"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                style="@style/image_home"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/circle_gray"
+                android:layout_column="2"
+                android:layout_gravity="center|top"
+                android:orientation="vertical"
                 android:padding="10dp"
-                android:src="@drawable/add_page" />
+                android:rowCount="2">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Add new Complaint"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/logout_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:text="Logout" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:background="#bcb7b7" />
+                <Button
+                    android:id="@+id/game_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:text="Games" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Complaint about PC and Peripherals "
-                android:textColor="@android:color/darker_gray" />
+                <android.support.v7.widget.CardView
+                    android:id="@+id/viewComplaintCardView_home"
+                    style="@style/cradview_home"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="8dp">
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/iCard_cardView_home"
-        style="@style/cradview_home"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp">
+                        <ImageView
+                            style="@style/image_home"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/circle_gray"
+                            android:padding="2dp"
+                            android:src="@drawable/view_comp_icon" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="View Complaints"
+                            android:textStyle="bold" />
 
-            <ImageView
-                style="@style/image_home"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/circle_gray"
-                android:padding="4dp"
-                android:src="@drawable/finalicard_small" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#c2b8b8" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="I-Card Services"
-                android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Know status of your Complaints"
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:background="#b9adad" />
+                            android:textColor="@android:color/darker_gray" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Deals in I-Cards and Business Cards"
-                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/addNewComplaintCV_home"
+                    style="@style/cradview_home"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="8dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/feedbackCV_home"
-        style="@style/cradview_home"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+                        <ImageView
+                            style="@style/image_home"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/circle_gray"
+                            android:padding="10dp"
+                            android:src="@drawable/add_page" />
 
-            <ImageView
-                style="@style/image_home"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/circle_gray"
-                android:src="@drawable/feedback_icon" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Add new Complaint"
+                            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Feedback"
-                android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#bcb7b7" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:background="#cec0c0" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Complaint about PC and Peripherals "
+                            android:textColor="@android:color/darker_gray" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="We value your feedback"
-                android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/iCard_cardView_home"
+                    style="@style/cradview_home"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            style="@style/image_home"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/circle_gray"
+                            android:padding="4dp"
+                            android:src="@drawable/finalicard_small" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="I-Card Services"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#b9adad" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Deals in I-Cards and Business Cards"
+                            android:textColor="@android:color/darker_gray" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/feedbackCV_home"
+                    style="@style/cradview_home"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            style="@style/image_home"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/circle_gray"
+                            android:src="@drawable/feedback_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Feedback"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#cec0c0" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="We value your feedback"
+                            android:textColor="@android:color/darker_gray" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
 
-</LinearLayout>
-</ScrollView>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_home"
+        app:menu="@menu/drawer_view" />
+
+</android.support.v4.widget.DrawerLayout>
