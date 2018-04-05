@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/back_action"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="20dp"
+    android:background="@android:color/transparent"
+    android:elevation="4dp"
+    android:padding="0dp"
+    android:scaleType="fitCenter"
+    android:src="@drawable/ic_arrow_back_white_24dp"
+    android:visibility="visible" />

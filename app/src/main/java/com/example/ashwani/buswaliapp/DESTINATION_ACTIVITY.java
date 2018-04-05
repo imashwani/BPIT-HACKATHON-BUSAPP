@@ -17,12 +17,12 @@ import android.widget.Toast;
 public class DESTINATION_ACTIVITY extends AppCompatActivity {
     Spinner spinner;
     String origin = "";
-
+public static String choosen="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination__activity);
-        origin = getIntent().getStringExtra("BUSSTOP");
+//        origin = getIntent().getStringExtra("BUSSTOP");
         spinner = (Spinner) findViewById(R.id.spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
 
@@ -40,7 +40,7 @@ public class DESTINATION_ACTIVITY extends AppCompatActivity {
                 String x = getIntent().getStringExtra("busStop");
                 x=adapterView.getItemAtPosition(i).toString();
                 TextView tv = findViewById(R.id.des_from_to);
-                tv.setText("Buses available from " + origin+" to"+x);
+                tv.setText("Buses available to "+x);
 
                 listView.setAdapter(new CustomAdapter(DESTINATION_ACTIVITY.this, new String[]{"BUS NO.", "764", "774", "874", "754", "964", "864"},
                         new String[]{"Fare", "15", "10", "15", "5", "25", "20"},

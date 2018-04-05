@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,17 +29,16 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     user userObj;
     int RC_SIGN_IN = 1;
+    CardView busPass, game, ticketBook;
+    DatabaseReference dbref, dbUser;
+    FirebaseDatabase inst;
     private String mUsername = null;
     private String mUseremail = null, phone = null;
     private TextView tv;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-    CardView busPass,game,ticketBook;
-
+    private TextView nav_user, nav_mail;
     private DrawerLayout mDrawerLayout;
-
-    DatabaseReference dbref, dbUser;
-    FirebaseDatabase inst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +56,8 @@ public class HomeActivity extends AppCompatActivity
         busPass = findViewById(R.id.busPass_home);
         game = findViewById(R.id.palygame_home);
         ticketBook = findViewById(R.id.bookTicket_home);
+        nav_mail = findViewById(R.id.nav_emailuser);
+        nav_user = findViewById(R.id.nav_username);
 
         game.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity
         busPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomeActivity.this, GameActivity.class);
+                Intent i = new Intent(HomeActivity.this, Buspass.class);
 
                 startActivity(i);
             }
@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity
                     Toast.makeText(HomeActivity.this, "You are logged in friend", Toast.LENGTH_SHORT).show();
                     mUsername = user.getDisplayName();
                     mUseremail = user.getEmail();
-                    setUserdata();
+//                    setUserdata();
                     android.util.Log.d("", "onAuthStateChanged: CCIN Email:" + mUseremail + "name: " + mUsername);
 
                 } else {//user signed out
@@ -126,14 +126,6 @@ public class HomeActivity extends AppCompatActivity
 
         //-----------------------------------------------
 
-
-        setUserdata();
-                user u=new user();
-                u.email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                u.name=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();;
-                String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
-                u.id=id;
-                dbUser.child(id).setValue(u);
 
     }
 
@@ -175,8 +167,7 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.home_navbar)
-        {
+        if (id == R.id.home_navbar) {
             Intent i = new Intent(HomeActivity.this, HomeActivity.class);
             startActivity(i);
             // Handle the camera action
@@ -192,7 +183,10 @@ public class HomeActivity extends AppCompatActivity
             sendIntent.putExtra(Intent.EXTRA_TEXT, "This is the new hassale free app to book tickets. Try this app.");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
-
+        } else if (id == R.id.rupee) {
+            Intent i = new Intent(HomeActivity.this, PaytmMain.class);
+            i.putExtra("money","25");
+            startActivity(i);
 
         } else if (id == R.id.nav_send) {
             //TODO: github website link here
@@ -208,6 +202,15 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void setUserdata() {
+        user u = new user();
+        u.email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        u.name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        u.id = id;
+        dbUser.child(id).setValue(u);
+//        nav_user.setText(u.name);
+//        nav_mail.setText(u.email);
+
     }
 
     @Override
