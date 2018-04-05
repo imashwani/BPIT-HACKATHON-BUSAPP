@@ -39,6 +39,7 @@ public class HomeActivity extends AppCompatActivity
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private TextView nav_user, nav_mail;
     private DrawerLayout mDrawerLayout;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +71,12 @@ public class HomeActivity extends AppCompatActivity
         busPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomeActivity.this, Buspass.class);
 
-                startActivity(i);
+                    Intent i = new Intent(HomeActivity.this, Buspass.class);
+
+                    startActivity(i);
+
+
             }
         });
 
@@ -80,8 +84,15 @@ public class HomeActivity extends AppCompatActivity
         ticketBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(staticClass.ticket==true){
+                    Toast.makeText(HomeActivity.this,"You already have a Ticket",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(HomeActivity.this, ticketAct.class);
+                    startActivity(i);
+                }
+                else{
                 Intent i = new Intent(HomeActivity.this, barScan.class);
                 startActivity(i);
+            }
             }
         });
 
@@ -100,18 +111,18 @@ public class HomeActivity extends AppCompatActivity
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                 user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(HomeActivity.this, "You are logged in friend", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(HomeActivity.this, "You are logged in friend", Toast.LENGTH_SHORT).show();
                     mUsername = user.getDisplayName();
                     mUseremail = user.getEmail();
-//                    setUserdata();
+                    setUserdata();
                     android.util.Log.d("", "onAuthStateChanged: CCIN Email:" + mUseremail + "name: " + mUsername);
 
                 } else {//user signed out
                     startActivityForResult(
                             com.firebase.ui.auth.AuthUI.getInstance()
-                                    .createSignInIntentBuilder()
+                                    .createSignInIntentBuilder().setLogo(R.drawable.download)
                                     .setIsSmartLockEnabled(false)
                                     .setAvailableProviders(
                                             Arrays.asList(new com.firebase.ui.auth.AuthUI.IdpConfig.EmailBuilder().build(),
@@ -174,6 +185,16 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.profile_navbar) {
             Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
             startActivity(i);
+        }
+        else if (id == R.id.passAct) {
+            if(staticClass.ticket==true)
+            {
+                Intent i = new Intent(HomeActivity.this, ticketAct.class);
+                startActivity(i);
+            }
+            else{
+                Toast.makeText(HomeActivity.this, "You don't have any Ticket yet!", Toast.LENGTH_SHORT).show();
+            }
 
         } else if (id == R.id.logout_navbar) {
             FirebaseAuth.getInstance().signOut();
@@ -183,12 +204,7 @@ public class HomeActivity extends AppCompatActivity
             sendIntent.putExtra(Intent.EXTRA_TEXT, "This is the new hassale free app to book tickets. Try this app.");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
-        } else if (id == R.id.rupee) {
-            Intent i = new Intent(HomeActivity.this, PaytmMain.class);
-            i.putExtra("money","25");
-            startActivity(i);
-
-        } else if (id == R.id.nav_send) {
+        }  else if (id == R.id.nav_send) {
             //TODO: github website link here
             String url = "http://www.example.com";
             Intent i = new Intent(Intent.ACTION_VIEW);
@@ -203,11 +219,17 @@ public class HomeActivity extends AppCompatActivity
 
     private void setUserdata() {
         user u = new user();
-        u.email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        u.name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        u.email = mFirebaseAuth.getCurrentUser().getEmail();
+        u.name = mFirebaseAuth.getCurrentUser().getDisplayName();
+        TextView uname=findViewById(R.id.nav_username);
+        TextView uemail=findViewById(R.id.nav_emailuser);
+//        uname.setText(user.getDisplayName());
+//        uemail.setText(user.getEmail());
+
         String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         u.id = id;
         dbUser.child(id).setValue(u);
+        staticClass.u=u;
 //        nav_user.setText(u.name);
 //        nav_mail.setText(u.email);
 

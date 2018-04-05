@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:background="@drawable/gradient_classic"
+    android:fillViewport="true">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="8dp"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -15,6 +24,7 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/name_bus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -22,12 +32,14 @@
             android:textSize="15sp" />
 
         <EditText
+            android:id="@+id/father_bus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:hint="Father's Name"
             android:textSize="15sp" />
         <EditText
+            android:id="@+id/college_bus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -48,6 +60,7 @@
                 android:textSize="20sp" />
 
             <RadioGroup
+                android:defaultFocusHighlightEnabled="true"
                 android:id="@+id/genderGroup"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
@@ -57,6 +70,7 @@
                 android:weightSum="1">
 
                 <RadioButton
+                    android:focusedByDefault="true"
                     android:id="@+id/form_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,6 +106,7 @@
                 android:textSize="20sp" />
 
             <RadioGroup
+                android:defaultFocusHighlightEnabled="true"
                 android:id="@+id/form_cat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,6 +117,7 @@
                 android:weightSum="1">
 
                 <RadioButton
+                    android:focusedByDefault="true"
                     android:padding="5dp"
                     android:id="@+id/cat_stu"
                     android:layout_width="wrap_content"
@@ -133,7 +149,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_margin="8dp"
@@ -145,10 +161,12 @@
                     android:layout_width="wrap_content"
                     android:text="College Id Photo"
                     android:layout_height="wrap_content" />
+
                 <ImageView
                     android:id="@+id/collegeId_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:scaleType="fitStart" />
 
 
             </LinearLayout>
@@ -162,11 +180,19 @@
                     android:layout_width="wrap_content"
                     android:text="FeeSlip Photo"
                     android:layout_height="wrap_content" />
+
                 <ImageView
                     android:id="@+id/feeslip_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:scaleType="fitStart" />
             </LinearLayout>
         </LinearLayout>
-
+<Button
+    android:layout_marginTop="10dp"
+    android:id="@+id/sumit_bt"
+    android:text="Submit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
     </LinearLayout>
+</ScrollView>

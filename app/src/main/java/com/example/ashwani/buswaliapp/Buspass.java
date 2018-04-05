@@ -18,7 +18,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -37,6 +40,8 @@ public class Buspass extends AppCompatActivity {
     int CAMERA_PIC_REQUEST = 8, SELECT_IMAGE = 4;
     Button collegeIDBt,FeeslipBt;
     ImageView collegeIDimg,Feeslipimg;
+    EditText name_edittext,fathername,college;
+    RadioGroup gender,category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,23 +50,92 @@ public class Buspass extends AppCompatActivity {
         collegeIDimg=findViewById(R.id.collegeId_pic);
         Feeslipimg=findViewById(R.id.feeslip_pic);
 
+        name_edittext=findViewById(R.id.name_bus);
+        fathername=findViewById(R.id.father_bus);
+        college=findViewById(R.id.college_bus);
+
         collegeIDBt=findViewById(R.id.collegeid_button);
         FeeslipBt=findViewById(R.id.feeslipButton);
-
+        gender=findViewById(R.id.genderGroup);
+        category=findViewById(R.id.form_cat);
+        gender.check(R.id.form_male);
+        category.check(R.id.cat_stu);
         collegeIDBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 whichPhoto=1;
-                onclick();
+               onImageGalleryClicked();
             }
         });
-        Feeslipimg.setOnClickListener(new View.OnClickListener() {
+        FeeslipBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 whichPhoto=2;
-                onclick();
+//                onclick();
+                onImageGalleryClicked();
             }
         });
+
+        Button submit=findViewById(R.id.sumit_bt);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(name_edittext.getText().toString().length()>0 && fathername.getText().toString().length()>0 & college.getText().toString().length() >0)
+                {
+                    String[] listOptions = new String[]{"1 month", "3 month","6 month","12 month"};
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(Buspass.this);
+                    builder.setTitle("Select any one").setCancelable(true);
+                    builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+                    builder.setSingleChoiceItems(listOptions, -1, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                           Intent it=new Intent(Buspass.this,PaytmMain.class);
+                           int money=0;
+                           int month=0;
+                           // Do something
+                            if (which == 0) {
+                             money=125;
+                             month=1;
+                            }
+                           else if (which == 1) {
+                               money=325;
+                               month=3;
+                            } else if (which == 2) {
+                                money=625;
+                                month=6;
+                            }else if (which == 3) {
+                                money=1225;
+                                month=12;
+                            }
+                            staticClass.passMonth=month;
+                            dialog.dismiss();
+                            it.putExtra("money",String.valueOf(money));
+                            staticClass.isPass=true;
+                            startActivity(it);
+                        }
+                    });
+
+                    // Show the AlertDialog
+                    final AlertDialog dialog = builder.show();
+                }
+                else{
+
+                    if(! (name_edittext.getText().length()>0))
+                        name_edittext.setError("enter your name");
+                    if(! (fathername.getText().length()>0))
+                        fathername.setError("enter your Father's name");
+                    if(! (college.getText().length()>0))
+                        college.setError("enter your College name");
+                }
+            }
+        });
+
     }
 
     public void onclick(){
@@ -84,7 +158,6 @@ public class Buspass extends AppCompatActivity {
                         invokeCamera();
                 }
                 if (which == 1) {
-                    Toast.makeText(Buspass.this, "Gallery ke dhikhaoge", Toast.LENGTH_SHORT).show();
                     onImageGalleryClicked();
                 }
             }
@@ -169,10 +242,9 @@ public class Buspass extends AppCompatActivity {
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    // show a message to the user indictating that the image is unavailable.
+                    // show a message to the user indicating that the image is unavailable.
                     Toast.makeText(Buspass.this, "Unable to open image", Toast.LENGTH_LONG).show();
                 }
-
             }
         }}
     @Override

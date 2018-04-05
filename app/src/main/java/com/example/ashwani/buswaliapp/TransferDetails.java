@@ -31,10 +31,7 @@ public class TransferDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 //
-        ImageView tick = findViewById(R.id.webview_image);
-        Glide.with(TransferDetails.this).asGif()
-                .load(R.drawable.tick)
-                .into(tick);
+
 
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phoneNumber);
@@ -46,6 +43,8 @@ public class TransferDetails extends AppCompatActivity {
 
         String data = "";
         data = it.getStringExtra("data");
+
+        staticClass.ticket=true;
 
         date_tv = findViewById(R.id.dateTime);
         SimpleDateFormat ft = new SimpleDateFormat("hh:mm a, dd MMM yyyy");
@@ -59,16 +58,22 @@ public class TransferDetails extends AppCompatActivity {
                 if ("egg".equals(data) || data.equals("Egg")) {
                     name.setText("Mukund");
                     phone.setText("9953239210");
-                } else {
-                    name.setText("Mukund");
-                    phone.setText("9953239210");
                 }
             }
         }
 
+//        if(staticClass.ticket==true)
+//        {
+//            Intent itp=new Intent(TransferDetails.this,ticketAct.class);
+//            startActivity(itp);
+//        }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent itp=new Intent(TransferDetails.this,HomeActivity.class);
+         startActivity(itp);
+    }
     //--------------------------------------------
 
 }

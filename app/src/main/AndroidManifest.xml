@@ -20,14 +20,8 @@
         <activity android:name=".GameActivity" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Easy Travel"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".TicketBook" />
         <activity android:name=".barScan" />
         <activity android:name=".ProfileActivity" />
@@ -45,7 +39,16 @@
         </provider>
 
         <activity android:name=".PaytmMain" />
-        <activity android:name=".TransferDetails"></activity>
+        <activity android:name=".TransferDetails" />
+        <activity android:name=".Launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".passShow" />
+        <activity android:name=".ticketAct"></activity>
     </application>
 
 </manifest>

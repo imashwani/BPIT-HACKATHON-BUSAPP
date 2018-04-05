@@ -28,9 +28,9 @@ public class PaytmMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paytm_main);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+
+        msg = findViewById(R.id.msg_home); Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        msg = findViewById(R.id.msg_home);
         ActionBar mActionBar = getSupportActionBar();
 //        mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
@@ -55,14 +55,14 @@ public class PaytmMain extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(PaytmMain.this, PaytmMain.class);
+                Intent itapna = new Intent(PaytmMain.this, TransferDetails.class);
                 String amnt = mRupee_tv.getText().toString();
 
                 String typo = msg.getText().toString();
-                it.putExtra("money", amnt);
-                it.putExtra("data", typo);
+                itapna.putExtra("money", amnt);
+                itapna.putExtra("data", typo);
                 if (amnt.length() != 0)
-                    startActivity(it);
+                    startActivity(itapna);
                 else
                     Toast.makeText(PaytmMain.this, "paise?", Toast.LENGTH_SHORT).show();
             }

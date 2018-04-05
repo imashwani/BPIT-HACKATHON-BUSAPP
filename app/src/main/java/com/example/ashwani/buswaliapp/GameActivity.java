@@ -1,6 +1,7 @@
 package com.example.ashwani.buswaliapp;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -21,13 +22,13 @@ public class GameActivity extends AppCompatActivity {
         zombie = findViewById(R.id.zombie);
         crick = findViewById(R.id.cricket);
 
-//        mm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(GameActivity.this, );
-//                startActivity(i);
-//            }
-//        });
+        mm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =GameActivity.this.getPackageManager().getLaunchIntentForPackage("com.appsomniacs.da2");
+                startActivity(i);
+            }
+        });
 //
 //        clash.setOnClickListener(new View.OnClickListener() {
 //            @Override

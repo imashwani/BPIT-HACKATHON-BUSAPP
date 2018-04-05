@@ -61,7 +61,7 @@ public class barScan extends AppCompatActivity implements ZXingScannerView.Resul
         Log.v("hello", rawResult.getText()); // Prints scan results
         Log.v("///hel2", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
         res = rawResult.getText();
-        Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, res, Toast.LENGTH_SHORT).show();
 //        dbBus.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
@@ -87,6 +87,7 @@ public class barScan extends AppCompatActivity implements ZXingScannerView.Resul
             //*********incomplete
             Intent i = new Intent(barScan.this, DESTINATION_ACTIVITY.class);
             DESTINATION_ACTIVITY.choosen = hm.get(res);
+            staticClass.from=hm.get(res);
 //            i.putExtra("BUSSTOP", busStop);
             startActivity(i);
         } else {
