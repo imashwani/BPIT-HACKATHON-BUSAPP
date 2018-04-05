@@ -1,6 +1,7 @@
 package com.example.ashwani.buswaliapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,21 +31,59 @@ public class HomeActivity extends AppCompatActivity
     user userObj;
     int RC_SIGN_IN = 1;
     private String mUsername = null;
-    private String mUseremail = null;
+    private String mUseremail = null, phone = null;
     private TextView tv;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    CardView busPass,game,ticketBook;
 
     private DrawerLayout mDrawerLayout;
 
+    DatabaseReference dbref, dbUser;
+    FirebaseDatabase inst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        inst = FirebaseDatabase.getInstance();
+        dbref = inst.getReference("MAIN");
+        dbUser = dbref.child("USER");
+
+        busPass = findViewById(R.id.busPass_home);
+        game = findViewById(R.id.palygame_home);
+        ticketBook = findViewById(R.id.bookTicket_home);
+
+        game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, GameActivity.class);
+                startActivity(i);
+            }
+        });
+
+        busPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, GameActivity.class);
+
+                startActivity(i);
+            }
+        });
+
+
+        ticketBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, barScan.class);
+                startActivity(i);
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -85,21 +126,14 @@ public class HomeActivity extends AppCompatActivity
 
         //-----------------------------------------------
 
-        Button logout = findViewById(R.id.logout_button);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFirebaseAuth.signOut();
-            }
-        });
-        Button game = findViewById(R.id.game_button);
-        game.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(HomeActivity.this, GameActivity.class);
-                startActivity(it);
-            }
-        });
+
+        setUserdata();
+                user u=new user();
+                u.email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                u.name=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();;
+                String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                u.id=id;
+                dbUser.child(id).setValue(u);
 
     }
 
@@ -141,18 +175,31 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.home_navbar)
+        {
+            Intent i = new Intent(HomeActivity.this, HomeActivity.class);
+            startActivity(i);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.profile_navbar) {
+            Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
+            startActivity(i);
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.logout_navbar) {
+            FirebaseAuth.getInstance().signOut();
         } else if (id == R.id.nav_share) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is the new hassale free app to book tickets. Try this app.");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+
 
         } else if (id == R.id.nav_send) {
-
+            //TODO: github website link here
+            String url = "http://www.example.com";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -161,14 +208,6 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void setUserdata() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        mUseremail = user.getDisplayName();
-        mUseremail = user.getEmail();
-        userObj = new user(mUsername, mUseremail);
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("USERDATA").child(user.getUid());
-        databaseReference.setValue(user);
-
     }
 
     @Override

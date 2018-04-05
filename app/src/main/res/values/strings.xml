@@ -7,4 +7,13 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string-array name="destination_list">
+        <item>Dhaula Kuan</item>
+        <item>Nehru Place</item>
+        <item>India gate</item>
+        <item>PALAM</item>
+        <item>Lodhi garden</item>
+        <item>Rohini</item>
+        <item>Rithala</item>
+    </string-array>
 </resources>

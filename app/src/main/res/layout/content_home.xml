@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_weight="1"
+    android:background="@drawable/gradient_classic"
     android:fillViewport="true">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,29 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="2"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center|top"
         android:orientation="vertical"
         android:padding="10dp"
         android:rowCount="2">
 
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="Logout" />
-
-        <Button
-            android:id="@+id/game_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="Games" />
-
         <android.support.v7.widget.CardView
-            android:id="@+id/viewComplaintCardView_home"
+            android:id="@+id/bookTicket_home"
             style="@style/cradview_home"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="8dp">
@@ -45,18 +31,19 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:src="@drawable/ticket_img"
                     style="@style/image_home"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circle_gray"
-                    android:padding="2dp"
-                    android:src="@drawable/view_comp_icon" />
+                    android:padding="8dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="View Complaints"
+                    android:text="Book Ticket"
                     android:textStyle="bold" />
 
                 <View
@@ -70,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Know status of your Complaints"
+                    android:text="Scan the QR Code Available on Bus Stop"
 
                     android:textColor="@android:color/darker_gray" />
 
@@ -78,7 +65,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/addNewComplaintCV_home"
+            android:id="@+id/busPass_home"
             style="@style/cradview_home"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="8dp">
@@ -95,13 +82,13 @@
                     android:layout_height="64dp"
                     android:background="@drawable/circle_gray"
                     android:padding="10dp"
-                    android:src="@drawable/add_page" />
+                    android:src="@drawable/buspass" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Add new Complaint"
+                    android:text="Get a Bus Pass"
                     android:textStyle="bold" />
 
                 <View
@@ -115,14 +102,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Complaint about PC and Peripherals "
+                    android:text="Apply for Bus Pass Online "
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/iCard_cardView_home"
+            android:id="@+id/palygame_home"
             style="@style/cradview_home"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="8dp">
@@ -137,15 +124,16 @@
                     style="@style/image_home"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
+                    android:src="@drawable/mob_game"
                     android:background="@drawable/circle_gray"
                     android:padding="4dp"
-                    android:src="@drawable/finalicard_small" />
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="I-Card Services"
+                    android:text="Play Game"
                     android:textStyle="bold" />
 
                 <View
@@ -159,50 +147,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Deals in I-Cards and Business Cards"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/feedbackCV_home"
-            style="@style/cradview_home"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    style="@style/image_home"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_gray"
-                    android:src="@drawable/feedback_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Feedback"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="#cec0c0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="We value your feedback"
+                    android:text="Getting Bored, Play Multi Player games"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
