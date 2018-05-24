@@ -21,8 +21,6 @@ As we all know, ***hustling for a ticket*** is a difficult job, specially in DTC
 >Solution :-
 An Android App which will target the above mentioned problems. It will have a ticket booking System based on Bar-Code and an Online Registration System for bus passes.
 
-This Single Page Website is used for the sake of presentation.
-
 ### Name :- ***Bus Ticket Booking System***.
 
 ### Abstract working procedure of our App:-
